@@ -1,0 +1,228 @@
+// *************************************
+//
+//   Buttons
+//
+//   <a href="#" class="button button--icon">
+//      <i class="icon icon-sound"></i> Playlist
+//   </a>
+//
+// *************************************
+
+@mixin button-color($color) {
+  border: 2px solid $color;
+  color: $color;
+  
+  &:after {
+    background-color: $color;
+  }
+
+  &:hover {
+    opacity: 1;
+    color: lighten($color, 10%);
+  }
+
+  &.button--solid {
+    background-color: $color;
+    border: none;
+    color: $white;
+  }
+
+  &.is-active {
+    background-color: $color;
+    color: $white;
+  }
+}
+
+// Button base
+.button {
+  @include border-radius($base-border-radius);
+  @include transition(0.25s);
+  border: 2px solid $white;
+  opacity: 1;
+  color: $white;
+  display: inline-block;
+  font-weight: bold;
+  padding: 12px 20px;
+  position: relative;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  &:hover {
+    color: $white;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+// Button modifier: button with icon
+.button--icon {
+  padding: 0 22px 0 0;
+
+  &:after {
+    content:'';
+    height: 100%;
+    width: 2px;
+    background-color: $white;
+    position: absolute;
+    top: 0;
+    left: 53px;
+  }
+
+  > .icon {
+    margin: 0 33px 0 5px;
+  }
+}
+
+// Button modifier: button color
+.button--green {
+  @include button-color($green-spotify);
+}
+
+.button--pink {
+  @include button-color($pink);
+}
+
+.button--white {
+  @include button-color($white);
+}
+
+.button-next {
+
+  &:after {
+    @extend .icon-arrow-right;
+    content:'';
+    display: inline-block;
+  }
+  
+  &:hover {
+    &:after {
+      @extend .icon-arrow-right-pink;
+    }
+  }
+}
+
+.button-prev {
+  &:after {
+    @extend .icon-arrow-left;
+    content:'';
+    display: inline-block;
+  }
+  
+  &:hover {
+    &:after {
+      @extend .icon-arrow-left-pink;
+    }
+  }
+}
+
+.button-next-small, .button-prev-small {
+  display: none;
+  padding: 50px 30px;
+  position: absolute;
+  top: 120px;
+
+  @include respond-to(728px, min-width) {
+    display: block;
+  }
+}
+.button-next-small {
+  right: 0;
+}
+.button-prev-small {
+  left: 0;
+}
+  
+.button-next-small {
+  &:after {
+    @extend .icon-arrow-right-small;
+    content:'';
+    display: inline-block;
+  }
+  
+  &:hover {
+    &:after {
+      @extend .icon-arrow-right-small-pink;
+    }
+  }
+}
+
+.button-prev-small {
+  &:after {
+    @extend .icon-arrow-left-small;
+    content:'';
+    display: inline-block;
+  }
+  
+  &:hover {
+    &:after {
+      @extend .icon-arrow-left-small-pink;
+    }
+  }
+}
+
+.button--large {
+  font-size: rem(18px);
+  padding-left: 2.5 * $base-whitespace;
+  padding-right: 2.5 * $base-whitespace;
+}
+
+.button-group {
+  @extend %clearfix;
+  font-size: 0;
+  list-style: none;
+  
+  > li {
+    display: block;
+  }
+
+  .button {
+    @include border-radius(0);
+    border-bottom: 0;
+    font-size: rem(16px);
+    min-width: 100%;
+  }
+
+  li:first-child {
+    .button {
+      @include border-radius($base-border-radius $base-border-radius 0 0);
+    }
+  }
+
+  li:last-child {
+    .button {
+      @include border-radius(0 0 $base-border-radius $base-border-radius);
+    }
+
+    .button {
+      border-bottom: 2px solid $pink;
+    }
+  }
+
+  
+  @include respond-to(570px, min-width) {
+    > li {
+      display: inline-block;
+    }
+
+    .button {
+      min-width: 175px;
+      border-right: 0;
+      border-bottom: 2px solid $pink;
+    }
+
+    li:first-child {
+      .button {
+        @include border-radius($base-border-radius 0 0 $base-border-radius);
+      }
+    }
+
+    li:last-child {
+      .button {
+        @include border-radius(0 $base-border-radius $base-border-radius 0);
+      }
+
+      .button {
+        border-right: 2px solid $pink;
+      }
+    }
+  }
+}

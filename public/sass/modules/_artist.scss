@@ -1,0 +1,122 @@
+// *************************************
+//
+//   Artist rounded view
+//
+//   <li class="artist">
+//     <p class="artist-header">Sonando ahora</p>
+//     <a href="#" class="artist-cover">
+//       <img src="/images/artists/1.png" alt="Jamie Lidell">
+//     </a>
+//     <p class="artist-description">Jamie Lidell</p>
+//     <p class="artist-footer">Multiply</p>
+//   </li>
+//
+// *************************************
+
+.artist {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  width: 136px;
+}
+
+.artist-cover {
+  @include border-radius(100%);
+  @include box-shadow(0 0 0 6px $white);
+  color: $white;
+  display: block;
+  font-family: "icons";
+  height: 130px;
+  margin-bottom: $base-line-height;
+  overflow: hidden;
+  position: relative;
+  width: 130px;
+
+  &:after {
+    @extend %vertical-align;
+    @extend .pic-play-1;
+    opacity: 0.75;
+    @include transition(opacity 0.25s);
+    display: inline-block;
+    font-size: $base-font-size * 5;
+    margin-left: .05em;
+  }
+  
+  &.is-playing {
+    &:after {
+      @extend .pic-pause-1;
+      margin-left: 0;
+    }
+  }
+  &:hover, &:active {
+    color: $white;
+
+    &:after {
+      opacity: 1;
+    }
+  }
+
+  > img {
+    @extend %vertical-align;
+  }
+}
+  
+  /*
+  *    <li class="artist not-playable">
+  *      <div class="artist-wrapper">
+  *        <p class="artist-header">Sonando ahora</p>
+  *        <span href="#" class="artist-cover">
+  *          <img src="/images/artists/1.png" alt="Jamie Lidell">
+  *        </span>
+  *        <p class="artist-description">Jamie Lidell</p>
+  *        <p class="artist-footer">Multiply</p>
+  *      </div>
+  *    </li>
+  */
+
+  .artist {
+    &.not-playable {
+      .artist-cover:after {
+        display: none;
+      }
+    }
+  }
+
+.artist-header, .artist-description, .artist-footer {
+  color: $white;
+  font-size: rem($base-font-size + 2);
+  margin: 0 -100%; // to allow overflow on the right and left both sides
+  margin-bottom: $base-whitespace;
+  white-space: nowrap;
+}
+
+.artist-footer {
+  margin-bottom: 0;
+}
+
+.artist-description {
+  font-weight: 600;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.artist-header {
+  color: $grey-light;
+}
+
+.artist-bubble {
+  @include border-radius(100%);
+  background-color: $white;
+  // color: $black;
+  display: block;
+  font-size: rem(24px);
+  font-weight: bold;
+  height: 42px;
+  line-height: 42px;
+  position: absolute;
+  right: 2px;
+  text-align: center;
+  top: -10px;
+  width: 42px;
+  z-index: 1;
+}

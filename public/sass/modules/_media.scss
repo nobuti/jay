@@ -1,0 +1,46 @@
+/**
+ * The famous media object
+ * e.g.:
+ *
+   <div class="media">
+      <div class="media-image">
+        <img src="troll.jpg">
+      </div>
+      <div class="media-body">
+        Lorem ipsum...
+      </div>
+   </div>
+ *
+ *
+ */
+
+.media {
+  @extend %clearfix;
+  display: block;
+}
+
+  .media-body {
+    display: block;
+    overflow: hidden;
+
+    &, > :last-child {
+        margin-bottom: 0;
+    }
+  }
+
+  .media-image {
+    float: left;
+    margin-right: $base-whitespace;
+
+    > img {
+        display: block;
+    }
+  }
+
+.media--reverse {
+  > .media-image {
+    float: right;
+    margin-right: 0;
+    margin-left: $base-whitespace;
+  }
+}

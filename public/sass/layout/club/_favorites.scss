@@ -1,0 +1,23 @@
+// *************************************
+//
+//   Favorites: slide
+//
+// *************************************
+
+
+.club-fav-list {
+  @extend .nav;
+  @extend .nav--banner;
+
+  .artist {
+    margin: 0 26px;
+  }
+
+  .artist-cover {
+    margin-bottom: $base-whitespace;
+  }
+
+  .artist-footer {
+    color: rgba(0,0,0,0.6);
+  }
+}

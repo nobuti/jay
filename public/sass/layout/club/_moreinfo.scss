@@ -1,0 +1,70 @@
+// *************************************
+//
+//   Club more info
+//
+// *************************************
+
+.club-moreinfo {
+  
+  .club-moreinfo-wrapper {
+    @extend %l-wrapper;
+    padding-top: $base-whitespace * 2.5;
+    padding-bottom: $base-whitespace * 1.5;
+
+    @include respond-to(675px, min-width) {
+      padding-bottom: 0;
+      padding-top: 0;
+    }
+  }
+
+  .nav {
+    li {
+      display: block;
+      padding-bottom: $base-whitespace;
+      text-align: center;
+      
+      @include respond-to(675px, min-width) {
+        display: inline-block;
+        padding: $base-whitespace * 2 $base-whitespace;
+      }
+
+      @include respond-to(850px, min-width) {
+        display: inline-block;
+        padding: $base-whitespace * 2;
+      }
+    }
+  }
+  
+  .moreinfo-label, .moreinfo-value {
+    display: inline-block;
+    font-size: rem($base-font-size + 2);
+
+    @include respond-to(675px, min-width) {
+      display: block;
+    }
+  }
+  .moreinfo-label {
+    font-weight: bold;
+    text-transform: uppercase;
+    min-width: 100px;
+
+    @include respond-to(675px, min-width) {
+      margin-bottom: $base-whitespace * 0.5;
+      min-width: auto;
+    }
+  }
+
+  .moreinfo-value {
+    color: $grey;
+  }
+
+  .moreinfo-link {
+    @include transition(0.25s);
+    border-bottom: 1px dashed $grey;
+    color: $grey;
+    &:hover, &:active {
+      color: $pink;
+      border-bottom: 1px dashed $pink;
+    }
+  }
+}

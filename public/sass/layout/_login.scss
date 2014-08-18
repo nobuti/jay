@@ -1,0 +1,51 @@
+.login {
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 200px;
+}
+
+.error {
+  margin: $base-whitespace 0;
+  text-align: center;
+  color: $pink;
+}
+
+.password-field, .box-button {
+  @include border-radius(4px);
+  display: inline-block;
+  font-size: rem($base-font-size + 2);
+  text-align: center;
+  width: 294px;
+}
+
+.password-field {
+  background-color: $grey-ultralight;
+  border: 2px solid $blue;
+  margin-bottom: 20px;
+  outline: none;
+  padding: 14px 20px;
+
+  &.is-invalid {
+    border: 2px solid $pink;
+  }
+}
+
+.box-button {
+  @include box-shadow(0 2px 0 darken($pink, 30%));
+  border: none;
+  background-color: $pink;
+  color: $white; 
+  outline: none;
+  padding: 17px 20px 15px 20px;
+  
+  &:hover {
+    background-color:$pink;
+  }
+
+  &:active,
+  &:focus{
+    @include box-shadow(none);
+    background-color:$pink;
+    padding: 16px 20px 15px 20px;
+  }
+}

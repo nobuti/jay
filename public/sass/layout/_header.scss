@@ -1,0 +1,187 @@
+// *************************************
+//
+// Header styles
+//
+// *************************************
+.header {
+  @extend %l-wrapper;
+}
+  
+  .header--main {
+    @extend %l-table;
+    font-size: $base-font-size + 2;
+    height: 76px;
+
+    @include respond-to(769px, min-width) {
+      height: 106px;
+    }
+    
+  }
+  
+  .brand, .main-menu, .user-menu {
+    @extend %l-table-cell;
+  }
+
+  .brand {
+    line-height: 1;
+    width: 100%;
+    text-align: center;
+
+    @include respond-to(769px, min-width) {
+      width: auto;
+    }
+
+    .soundset {
+      @extend i;
+      @extend .icon-soundset;
+    }
+  }
+  
+  .main-menu {
+    @extend %align-right;
+    width: 100%;
+
+    > .nav {
+      @include transition(0s);
+      border-bottom: 1px solid transparent;
+      border-top: 1px solid transparent;
+      left: 0;
+      max-height: 0;
+      overflow: hidden;
+      position: absolute;
+      top: 75px;
+      width: 100%;
+      z-index: 3;
+      
+      .is-open & {
+        @include transition(0.25s);
+        max-height: 600px;
+        border-bottom: 1px solid $grey-darker;
+        border-top: 1px solid $grey-darker;
+      }
+
+      @include respond-to(769px, min-width) {
+        &, .is-open & {
+          border: 0;
+          left: auto;
+          position: relative;
+          top: auto;
+          width: auto;
+          max-height: 106px;
+        }
+      }
+
+      li {
+        background: $mobile-background;
+        display: block;
+        font-size: rem($base-font-size + 5);
+        text-align: center;
+        padding: 0 $base-whitespace * 1.2;
+        
+        @include respond-to(769px, min-width) {
+          background: transparent;
+          display: inline-block;
+          font-size: rem($base-font-size + 2);
+          margin-right: 38px;
+          padding: 0;
+          
+          &.with-separation {
+            padding-right: 38px;
+            border-right: 1px solid $white;
+          }
+
+          &.responsive {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .user-menu {
+    display: none;
+    white-space: nowrap;
+
+    > .nav {
+      > li {
+        margin-right: 5px;
+
+        & + li { // :last-child for poor ie8.
+          margin-right: 0;
+        }
+      }
+    }
+
+    @include respond-to(769px, min-width) {
+      display: table-cell;
+    }
+  }
+  
+  .user-menu-options {
+    font-size: rem(16px);
+    text-align: center;
+
+    a {
+      display: block;
+      border-bottom: 1px solid $grey;
+      padding: 10px;
+    }
+
+    li:last-child {
+      a {
+        border: 0;
+      }
+    }
+  }
+
+  .main-menu-link {
+
+    &, .nav > li > & {
+      display: block;
+    }
+    border-bottom: 1px solid $grey-darker;
+    padding: $base-whitespace * 0.8 0;
+    
+    .nav > li:last-child > & {
+      border-bottom: 0;
+    }
+
+    @include respond-to(769px, min-width) {
+      display: inline-block;
+      border-bottom: 0;
+      padding: 4px 0;
+    }
+  }
+
+.mobile-button {
+  border-left: 1px solid transparent;
+  background-color: transparent;
+  display: block;
+  height: 76px;
+  line-height: 74px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  width: 79px;
+  z-index: 4;
+  
+  @include respond-to(769px, min-width) {
+    display: none;
+  }
+
+  .is-open & {
+    border-left: 1px solid $grey-darker;
+    background-color: $mobile-background;
+  }
+
+}
+.icon-tap {
+  @extend .icon-hamburguer;
+}
+
+.is-open {
+  .icon-tap {
+    @extend .icon-hamburguer-pink;
+  }
+}
+

@@ -1,0 +1,23 @@
+/* Fluid grid */
+
+.fluid {
+  text-align: justify;
+
+  &:after {
+    content: '';
+    display: inline-block;
+    width: 100%;
+  }
+}
+
+.fluid-item {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  
+  @include respond-to(960px, min-width) {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+}

@@ -1,0 +1,22 @@
+/*
+
+        Creating a sprite from following images:
+        
+        assets/images/pic/music.png (160x160)
+        assets/images/pic/promo-drink.png (85x103)
+        assets/images/pic/promo-ticket.png (143x67)
+        assets/images/pic/soundset-home.png (227x61)
+
+        Output files:
+          public/images/pic.png
+          assets/stylesheets/modules/_pic.scss
+
+        Output size:
+          615x160
+
+
+*/
+.pic-music { width: 160px; height: 160px; background: url(/images/pic.png) 0px 0px no-repeat; }
+.pic-promo-drink { width: 85px; height: 103px; background: url(/images/pic.png) -160px -28px no-repeat; }
+.pic-promo-ticket { width: 143px; height: 67px; background: url(/images/pic.png) -245px -46px no-repeat; }
+.pic-soundset-home { width: 227px; height: 61px; background: url(/images/pic.png) -388px -49px no-repeat; }

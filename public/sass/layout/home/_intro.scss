@@ -1,0 +1,60 @@
+.home-intro {
+  background-image: url("/images/home-header.jpg");
+  background-repeat:no-repeat;
+  background-size: cover;
+  background-position:center;
+  min-height: 560px;
+}
+
+.home-intro-body {
+  @extend %l-wrapper;
+  color: $white;
+
+  .media-body {
+    margin-bottom: 2 * $base-whitespace;
+    max-width: 2 * $l-column + $l-gutter;
+  }
+
+  .media-image {
+    display: none;
+    margin: 0;
+    text-align: center;
+    width: $l-column + $l-gutter;
+  }
+  
+  h1 {
+    font-family: $c-alternate-header-font-family;
+    font-size: rem(28px);
+    line-height: rem(32px);
+    margin-bottom: $base-whitespace;
+  }
+  
+  p {
+    font-size: rem(21px);
+    margin-bottom: $base-whitespace;
+  }
+
+  a {
+    margin-bottom: $base-whitespace;
+  }
+
+  @include respond-to(768px, min-width) {
+    h1 {
+      font-size: rem(36px);
+      line-height: rem(40px);
+    }
+
+    .media-image {
+      display: block;
+    }
+  }
+
+}
+.home-logo {
+  @extend %hide-text;
+  @extend .pic-soundset-home;
+  left: -$base-whitespace;
+  position: relative;
+  margin-bottom: $base-whitespace * 3;
+}
+

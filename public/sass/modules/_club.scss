@@ -1,0 +1,56 @@
+// *************************************
+//
+//   Club details in playlist
+//
+//   <div class="club">
+//     <h1 class="club-name">Independance <span class="club-time">00:35</span></h1>
+//     <p class="club-address">Santa Engracia 27, 28012 Madrid</p>
+//   </div>
+//
+// *************************************
+
+.club {
+  margin-bottom: $base-whitespace * 2 + 5;
+  text-align: center;
+}
+
+.club-name {
+  color: $pink;
+  line-height: 1;
+  font-size: rem($base-font-size + 12);
+  margin-bottom: $base-whitespace - 5;
+  text-transform: uppercase;
+
+  @include respond-to(470px, min-width) {
+    font-size: rem($base-font-size * 2 + 4);
+  }
+}
+
+.club-time {
+  color: $white;
+  margin-left: 5px;
+}
+
+.club-address {
+  color: $white;
+  display: inline-block;
+  font-size: rem($base-font-size + 2);
+  line-height: 1;
+  letter-spacing: rem(0.18px);
+  text-decoration: underline;
+}
+
+
+.club--noicon {
+  .club-name {
+    margin-left: 0;
+
+    &:before {
+      display: none;
+    }
+  }
+
+  .club-address {
+    margin: 0;
+  }
+}

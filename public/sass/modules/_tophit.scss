@@ -1,0 +1,185 @@
+// *************************************
+//
+//  Tophit
+//
+//  <li class="tophit">
+//    <a href="#" class="tophit-play"></a>
+//    <div class="tophit-details">
+//      <span class="tophit-artist"></span>
+//      <span class="tophit-album"></span>
+//      <span class="tophit-reproductions"></span>
+//    </div>
+//    <a href="#" class="tophit-fav"></a>
+//  </li>
+// *************************************
+
+.tophit-list {
+  margin: 0 auto;
+  max-width: $l-max-width;
+}
+
+.tophit {
+  @extend %clearfix; // no-calc
+  @include border-radius($base-border-radius + 2);
+  cursor: pointer;   
+  display: block;
+  position: relative;
+  margin-top: -1px;
+  &:before {
+    @include border-radius($base-border-radius + 2);
+    @include transition(border-color 0.25s);
+    background: none;
+    border: 2px solid transparent;
+    bottom: 0;
+    content:'';
+    display: block;
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 0;
+  }
+}
+
+.tophit-play, .tophit-details {
+  float: left;
+  line-height: 72px;
+  position: relative;
+}
+
+
+.tophit-play {
+  @include transition(opacity 0.25s);
+  opacity: 0;
+  -webkit-backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1.0, 1.0);
+  display: none;
+  width: 0;
+  @include respond-to(620px, min-width) {
+    display: block;
+    width: 72px;
+  }
+}
+
+.tophit-play {
+  border-right: 2px solid $pink;
+  margin-left: -100%; // no-calc
+}
+
+.tophit-details {
+  @include border-radius($base-border-radius);
+  background: none;
+  padding: 0 20px;
+  width: 100%;
+  &:after {
+    @include transition(background-color 0.25s);
+    background-color: $grey-light;
+    content: '';
+    display: block;
+    height: 1px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    @include respond-to(620px, min-width) {
+      width: calc(100% - 144px);
+    }
+  }
+}
+
+.tophit:first-child {
+  .tophit-details {
+
+    &:before {
+      @include transition(background-color 0.25s);
+      background-color: $grey-light;
+      content: '';
+      display: block;
+      height: 1px;
+      margin: 0 auto;
+      width: 100%;
+      @include respond-to(620px, min-width) {
+        width: calc(100% - 144px);
+      }
+    }
+  }
+}
+  .tophit-details-inner {
+    @extend %clearfix;
+    margin: 0;
+    @include respond-to(620px, min-width) {
+      margin: 0 72px; // no-calc
+    }
+  }
+
+  .tophit-artist, .tophit-album, .tophit-reproductions {
+    @extend %ellipsis;
+    @include transition(color 0.25s);
+    color: $grey;
+    float: left;
+    font-size: rem($base-font-size + 2);
+    text-align: left;
+  }
+
+  .tophit-artist {
+    color: $grey-dark;
+    font-weight: bold;
+    width: 50%;
+
+    @include respond-to(800px, min-width) {
+      width: 30%;
+    }
+  }
+  .tophit-album {
+    width: 50%;
+    @include respond-to(800px, min-width) {
+      width: 45%;
+    }
+  }
+  .tophit-reproductions {
+    display: none;
+    text-align: right;
+    width: 0%;
+    @include respond-to(800px, min-width) {
+      display: block;
+      width: 25%;
+    }
+  }
+
+.tophit:hover {
+
+  &:before {
+    border: 2px solid $pink;
+  }
+
+  .tophit-play {
+    opacity: 1;
+  }
+
+  .tophit-details {
+    border-color: transparent;
+    &:after, &:before {
+      background-color: transparent;
+    }
+  }
+
+  .tophit-artist, .tophit-album, .tophit-reproductions {
+    color: $pink;
+  }
+}
+
+  .tophit--more {
+    cursor: default;
+    font-size: rem($base-font-size + 2);
+    text-align: left;
+    
+    &:hover {
+      &:before {
+        display: none;
+      }
+
+      .tophit-details:after {
+        background-color: $grey-light;
+      }
+    }
+  }
